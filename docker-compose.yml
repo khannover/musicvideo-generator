@@ -1,0 +1,12 @@
+services:
+  mvgen:
+    build: .
+    image: musicvideo-generator
+    volumes:
+      - ./projects:/data
+    environment:
+      - MVGEN_RENDER_RESOLUTION=${MVGEN_RENDER_RESOLUTION:-1920x1080}
+      - MVGEN_RENDER_FPS=${MVGEN_RENDER_FPS:-30}
+      - MVGEN_ALIGNMENT_METHOD=${MVGEN_ALIGNMENT_METHOD:-proportional}
+      - MVGEN_MATCHING_METHOD=${MVGEN_MATCHING_METHOD:-filename}
+    entrypoint: ["mvgen"]

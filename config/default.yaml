@@ -1,0 +1,33 @@
+pipeline:
+  stages:
+    - ingest
+    - audio_analysis
+    - lyric_alignment
+    - structure_detection
+    - scene_planning
+    - prompt_building
+    - asset_matching
+    - lipsync_planning
+    - preview_render
+
+render:
+  resolution: "1920x1080"
+  fps: 30
+  codec: "libx264"
+  preset: "medium"
+  subtitle_font: "Arial"
+  subtitle_size: 48
+
+scene_defaults:
+  camera_motion: "slow_zoom_in"
+  transition_in: "crossfade"
+  transition_out: "crossfade"
+  subtitle_mode: "lower_third"
+  lip_sync_sections:
+    - "chorus"
+
+alignment:
+  method: "proportional"  # "proportional" | "whisper" | "gentle"
+
+matching:
+  method: "filename"  # "filename" | "embedding"

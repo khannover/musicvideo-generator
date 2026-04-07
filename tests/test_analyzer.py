@@ -53,8 +53,9 @@ class TestAudioAnalysis:
         sf.write(str(audio_path), data, sr)
 
         result = analyze_audio(audio_path)
-        # At least one silence region should be detected
-        assert len(result.silence_regions) >= 0  # May be empty depending on threshold
+        # At least zero silence regions (a silent track may or may not produce regions
+        # depending on threshold; mainly testing no crash)
+        assert isinstance(result.silence_regions, list)
 
     def test_structural_boundaries_within_duration(self, tmp_project: Path):
         pytest.importorskip("librosa")

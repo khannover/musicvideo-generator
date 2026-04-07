@@ -173,7 +173,7 @@ def _camera_motion_filter(camera_motion: str, resolution: str) -> str:
     filters = {
         "static": "null",
         "slow_zoom_in": f"zoompan=z='min(zoom+0.0015,1.5)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={w}x{h}",
-        "pan_left": f"crop=w={w}:h={h}:x='(iw-{w})*t/{{}}'.format(5):y=0",
+        "pan_left": f"crop=w={w}:h={h}:x='(iw-{w})*t/5':y=0",
         "handheld": "hue=H='sin(t*2)*2'",  # subtle colour shift as handheld proxy
         "pull_back": f"zoompan=z='max(zoom-0.001,1.0)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={w}x{h}",
     }
